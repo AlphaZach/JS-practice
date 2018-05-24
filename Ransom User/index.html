@@ -110,6 +110,8 @@
 </body>
 <script type="text/javascript">
   var btn = document.querySelector("#btn");
+
+  var url = 'https://randomuser.me/api/';
   var email = document.querySelector('#email');
   var city = document.querySelector('#city');
   var fullname = document.querySelector('#fullname');
@@ -117,14 +119,11 @@
   var image = document.querySelector('#avatar');
 
   btn.addEventListener('click', function(){
-    var url = 'https://randomuser.me/api/';
     fetch(url)
     .then(handleErrors)
     .then(parseJSON)
     .then(updateinfo)
-    .catch(function(error){
-      console.log(error);
-    });
+    .catch(displayError);
 
   //Error handling function
   function handleErrors (request){
@@ -146,6 +145,10 @@
       username.innerText = data.login.username;
       image.src = data.picture.thumbnail;
       email.innerText = data.email;
+    }
+
+  function displayError(error){
+      console.log(error);
     }
 
   })
