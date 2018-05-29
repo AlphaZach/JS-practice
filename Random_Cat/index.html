@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Cat</title>
+</head>
+<body>
+  <h1>Random Cat Photos</h1>
+  <button id='btn'>Random Cats!!</button>
+  <img src="https://purr.objects-us-west-1.dream.io/i/1302922972589_f.jpg">
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  $("#btn").click(function(){
+    $.getJSON("http://aws.random.cat/meow")
+    .done(function(data){
+      $("img").attr('src', data.file);
+    })
+    .fail(function(){
+      console.log("fail to request cat image");
+    })
+  })
+</script>
+</html>
