@@ -1,0 +1,1 @@
+generate RonSwanson Quote from the same api using 4 ways of AJAX requests
